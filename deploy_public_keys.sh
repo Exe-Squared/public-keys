@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FILES=("testCurl.php" )
+FILES=("martin-desktop-ed25519.pub" )
 
 # Initialize an empty string to store all content
 ALL_CONTENT=""
