@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FILES=("martin-desktop-ed25519.pub" )
+FILES=("martin-desktop-ed25519.pub", "connor_lock_rsa.pub")
 
 # Initialize an empty string to store all content
 ALL_CONTENT=""
