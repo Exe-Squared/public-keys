@@ -7,7 +7,7 @@ This system is used to deploy public keys to servers allowing SSH access
 2. Add the name of your public key into the FILES array in deploy_public_keys.sh
 ```shell
 FILES=("key1.pub") # Before addition of new key
-FILES=("key1.pub", "key2.pub") # After addition of new key
+FILES=("key1.pub" "key2.pub") # After addition of new key (ensure no commas between array items)
 ```
 To run the script from a server, run:
 ```shell
