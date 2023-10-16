@@ -1,16 +1,20 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-FILES=("martin_desktop_ed25519.pub", "connor_lock_rsa.pub", "matt-desktop-20211004.pub" )
+# Ensure there are no commas between the file names, as bash arrays are space separated
+FILES=("martin-desktop-ed25519.pub" "connor_lock_rsa.pub" "matt-desktop-20211004.pub" "ben_id_rsa.pub")
 
-# Initialize an empty string to store all content
-ALL_CONTENT=""
+AUTH_FILE="/root/.ssh/authorized_keys"
 
-# Loop through each file and download its content
-for FILE in $FILES; do
-    # Download file content from GitHub and concatenate
-    FILE_CONTENT=$(curl -s "https://raw.githubusercontent.com/Exe-Squared/public-keys/main/$FILE")
-    ALL_CONTENT+="$FILE_CONTENT\n"
+# Empty authorized_keys file
+if [[ -f "${AUTH_FILE}" ]]; then
+    echo "Emptying ${AUTH_FILE}"
+    truncate -s 0 "${AUTH_FILE}"
+fi
+
+# Loop through each file
+for FILE in "${FILES[@]}"; do
+    # Download file content from GitHub and append to authorized_keys
+    echo "Downloading ${FILE} from GitHub and appending to $AUTH_FILE"
+    PUBKEY=$(curl -s "https://raw.githubusercontent.com/Exe-Squared/public-keys/main/$FILE")
+    echo "${PUBKEY}" | tee -a "${AUTH_FILE}"
 done
-
-# Print all content
-echo -e $ALL_CONTENT > /root/.ssh/authorized_keys
