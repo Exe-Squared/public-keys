@@ -15,6 +15,8 @@ fi
 for FILE in "${FILES[@]}"; do
     # Download file content from GitHub and append to authorized_keys
     echo "Downloading ${FILE} from GitHub and appending to $AUTH_FILE"
-    PUBKEY=$(curl -s "https://raw.githubusercontent.com/Exe-Squared/public-keys/main/$FILE")
+    URL="https://raw.githubusercontent.com/Exe-Squared/public-keys/main/${FILE}"
+    echo "Downloading from ${URL}"
+    PUBKEY=$(curl -s "${URL}")
     echo "${PUBKEY}" | tee -a "${AUTH_FILE}"
 done
