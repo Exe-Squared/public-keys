@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Ensure there are no commas between the file names, as bash arrays are space separated
-FILES=("martin-desktop-ed25519.pub" "connor_lock_rsa.pub" "matt-desktop-20211004.pub" "ben_id_rsa.pub" "chris_moss_rsa.pub")
+FILES=("martin-desktop-ed25519.pub" "connor_lock_rsa.pub" "matt-desktop-20211004.pub" "ben_id_rsa.pub" "chris_moss_rsa.pub", "connor_voisey_id_rsa.pub")
 
 AUTH_FILE="/root/.ssh/authorized_keys"
 
